@@ -19,13 +19,30 @@
 
         <div class=" w-[65vmin] h-[70vmin] bg-theme-one rounded-md flex flex-col overflow-hidden">
             <div class="text-theme-two text-xl flex justify-between px-7 py-5">
-                <div class="">Score: 15</div>
-                <div class="">High Score: 30</div>
+                <div class="score">Score: 0</div>
+                <div class="high-score">High Score: 0</div>
             </div>
             <div id="playBoard"
                 class="bg-theme-four w-full h-full grid grid-cols-[repeat(30,_1fr)] grid-rows-[repeat(30,_1fr)]">
             </div>
-
+            <div class="controls flex justify-between">
+                <div data-key="ArrowLeft"
+                    class="w-[calc(100%_/_4)] py-6 flex justify-center items-center border-r border-solid border-theme-seven last:border-r-0 cursor-pointer">
+                    <img class="w-5" src="./assets/images/left.svg" alt="Left">
+                </div>
+                <div data-key="ArrowUp"
+                    class="w-[calc(100%_/_4)] py-6 flex justify-center items-center border-r border-solid border-theme-seven last:border-r-0 cursor-pointer">
+                    <img class="w-5" src="./assets/images/top.svg" alt="Top">
+                </div>
+                <div data-key="ArrowRight"
+                    class="w-[calc(100%_/_4)] py-6 flex justify-center items-center border-r border-solid border-theme-seven last:border-r-0 cursor-pointer">
+                    <img class="w-5" src="./assets/images/right.svg" alt="Right">
+                </div>
+                <div data-key="ArrowDown"
+                    class="w-[calc(100%_/_4)] py-6 flex justify-center items-center border-r border-solid border-theme-seven last:border-r-0 cursor-pointer">
+                    <img class="w-5" src="./assets/images/down.svg" alt="Bottom">
+                </div>
+            </div>
         </div>
 
     </div>

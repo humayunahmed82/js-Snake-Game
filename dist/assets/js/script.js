@@ -1,4 +1,7 @@
 const playBoard = document.getElementById("playBoard");
+const scoreElement = document.querySelector(".score");
+const highScoreElement = document.querySelector(".high-score");
+const controls = document.querySelectorAll(".controls div");
 
 let foodX, foodY;
 let snakeX = 5,
@@ -8,6 +11,11 @@ let velocityY = 0;
 let snakeBody = [];
 let gameOver = false;
 let setIntervalID;
+let score = 0;
+
+// Getting high score form the local storage
+let highScore = localStorage.getItem("high-score") || 0;
+highScoreElement.innerText = `Score: ${highScore}`;
 
 const changeFoodPosition = () => {
     // Passing a Random 0- 30 Value as Food Position
@@ -39,6 +47,12 @@ const changeDirection = (event) => {
     initGame();
 };
 
+controls.forEach((key) => {
+    key.addEventListener("click", () =>
+        changeDirection({ key: key.dataset.key })
+    );
+});
+
 const initGame = () => {
     if (gameOver) return handleGameOver();
 
@@ -47,7 +61,12 @@ const initGame = () => {
     if (snakeX === foodX && snakeY === foodY) {
         changeFoodPosition();
         snakeBody.push(foodX, foodY); // Pushing food position to snake body array
-        console.log(snakeBody);
+        score++;
+
+        highScore = score >= highScore ? score : highScore;
+        localStorage.setItem("high-score", highScore);
+        scoreElement.innerText = `Score: ${score}`;
+        highScoreElement.innerText = `Score: ${highScore}`;
     }
 
     for (let i = snakeBody.length - 1; i > 0; i--) {
@@ -66,7 +85,17 @@ const initGame = () => {
     }
 
     for (let i = 0; i < snakeBody.length; i++) {
+        // Adding a div for each part of the snake;s body
         htmlMarkup += `<div class="bg-theme-six" style="grid-area: ${snakeBody[i][1]} / ${snakeBody[i][0]}"></div>`;
+
+        // Checking if the snake head hit the body, if so set gameOver to true
+        if (
+            i !== 0 &&
+            snakeBody[0][1] === snakeBody[i][1] &&
+            snakeBody[0][0] === snakeBody[i][0]
+        ) {
+            gameOver = true;
+        }
     }
     playBoard.innerHTML = htmlMarkup;
 };
