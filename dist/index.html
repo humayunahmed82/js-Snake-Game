@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Calendar</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link href="./assets/css/tailwind.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="flex items-center justify-center min-h-screen bg-theme-three">
+
+        <div class=" w-[65vmin] h-[70vmin] bg-theme-one rounded-md flex flex-col overflow-hidden">
+            <div class="text-theme-two text-xl flex justify-between px-7 py-5">
+                <div class="">Score: 15</div>
+                <div class="">High Score: 30</div>
+            </div>
+            <div id="playBoard"
+                class="bg-theme-four w-full h-full grid grid-cols-[repeat(30,_1fr)] grid-rows-[repeat(30,_1fr)]">
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="./assets/js/script.js" defer></script>
+</body>
+
+</html>
